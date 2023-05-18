@@ -1,0 +1,45 @@
+.posicion {
+    width: 25%;
+    height: 25%;
+    display: flex;
+}
+
+.producto-solo {
+    margin-top: 80px;
+}
+
+.producto-solo .col-2 img {
+    padding: 0;
+}
+
+.producto-solo .col-2 {
+    padding: 20px;
+    display: flex;
+}
+
+.producto-solo h4 {
+    margin: 20px 0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.producto-solo input {
+    width: 50px;
+    height: 40px;
+    padding-left: 10px;
+    font-size: 20px;
+    margin-right: 10px;
+    border: 1px solid #000000;
+}
+
+input:focus {
+    outline: none;
+    border-color:#000000;
+    font-size: 20px;
+}
+
+#detalle{
+    font-weight: bold;
+    color: #000000;
+    font-size: 20px;
+}

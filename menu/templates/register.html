@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>team</title>
+
+    <!-- font link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Libreria JQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+
+    <!-- css file link  -->
+    <link rel="stylesheet" href="{%  static 'menu/css/style.css' %}">
+
+    <!-- css register file link -->
+    <link rel="stylesheet" href="{% static 'menu/css/register.css' %}">
+
+</head>
+<body>
+
+<!-- header starts  -->
+
+<header class="header">
+
+    <a href="{% url 'home' %}" class="logo"> <i class="fas fa-lightbulb"></i> KitHome </a>
+
+    <form action="" class="search-form">
+        <input type="search" placeholder="Buscar..." id="search-box">
+        <label for="search-box" class="fas fa-search"></label>
+    </form>
+
+    <div class="icons">
+        <div id="menu-btn" class="fas fa-bars"></div>
+        <div id="search-btn" class="fas fa-search"></div>
+        <div id="cart-btn" class="fas fa-shopping-cart"></div>
+        <div id="login-btn" class="fas fa-user"></div>
+    </div>
+
+</header>
+
+<!-- header ends  -->
+
+<!-- boton cierre  -->
+
+<div id="closer" class="fas fa-times"></div>
+
+<!-- navbar  -->
+
+<nav class="navbar">
+    <a href="{% url 'home' %}">Inicio</a>
+    <a href="{% url 'shop' %}">Tienda</a>
+    <a href="{% url 'about' %}">Nosotros</a>
+    <a href="{% url 'team' %}">Equipo</a>
+    <a href="{% url 'contact' %}">Contactanos</a>
+</nav>
+
+<!-- carrito  -->
+
+<div class="shopping-cart">
+
+    <div class="box">
+        <i class="fas fa-times"></i>
+        <img src="{% static 'menu/image/cart-img-1.jpg' %}" alt="">
+        <div class="content">
+            <h3>nombre mueble</h3>
+            <span class="quantity"> 1 </span>
+            <span class="multiply"> x </span>
+            <span class="price"> $25.000 </span>
+        </div>
+    </div>
+
+    <div class="box">
+        <i class="fas fa-times"></i>
+        <img src="{% static 'menu/image/cart-img-2.jpg' %}" alt="">
+        <div class="content">
+            <h3>nombre mueble</h3>
+            <span class="quantity"> 1 </span>
+            <span class="multiply"> x </span>
+            <span class="price"> $25.000 </span>
+        </div>
+    </div>
+
+    <div class="box">
+        <i class="fas fa-times"></i>
+        <img src="{% static 'menu/image/cart-img-3.jpg' %}" alt="">
+        <div class="content">
+            <h3>nombre mueble</h3>
+            <span class="quantity"> 1 </span>
+            <span class="multiply"> x </span>
+            <span class="price"> $25.000 </span>
+        </div>
+    </div>
+
+    <div class="box">
+        <i class="fas fa-times"></i>
+        <img src="{% static 'menu/image/cart-img-4.jpg' %}" alt="">
+        <div class="content">
+            <h3>nombre mueble</h3>
+            <span class="quantity"> 1 </span>
+            <span class="multiply"> x </span>
+            <span class="price"> $25.000 </span>
+        </div>
+    </div>
+
+    <h3 class="total"> total : <span>$100.000</span> </h3>
+
+    <a href="{% url 'checkit' %}" class="btn">Pagar</a>
+
+</div>
+
+<!-- inicio de sesion -->
+
+<div class="login-form">
+
+    <form action="">
+        <h3>Inicio de Sesión</h3>
+        <input type="email" placeholder="ingresa tu email" class="box">
+        <input type="password" placeholder="ingresa tu contraseña" class="box">
+        <div class="remember">
+            <input type="checkbox" name="" id="remember-me">
+            <label for="remember-me">Recuerdame</label>
+        </div>
+        <input type="submit" value="Iniciar sesión" class="btn">
+        <p>¿Olvidaste tu contraseña? <a href="{% url 'recovery' %}">click aqui</a></p>
+        <p>¿No tienes una cuenta? <a href="{% url 'register' %}">Crea una Ahora</a></p>
+    </form>
+
+</div>
+
+<section class="heading">
+    <h3></h3>
+    <p> <a href="{% url 'home' %}">Inicio</a> / <span>Registro</span> </p>
+</section>
+
+
+<!-- Para números [0-9]: 48-57
+
+Para letras (mayúsculas y minúsculas) sin números [a-zA-Z]: 65-90, 97-122
+
+Para letras (solo minúsculas) sin números [a-z]: 97-122
+
+Para letras (solo mayúsculas) sin números [A-Z]: 65-90
+
+Para números y letras [0-9a-zA-Z]: 48-57,65-90,97-122 
+
+event.charCode != [código] Permitiria todos los caracteres exceptuando el que se ingrese. 
+
+onkeypress="console.log(event.charCode) Muestra el codigo del caracter en consola si se desconoce -->
+
+
+    <div class="wrapper" id="form">
+        <div class="title">
+        Registro
+        </div>
+        <div class="form">
+        <div class="inputfield">
+            <label>Nombre</label>
+            <input type="text" class="input" id="name" pattern="[a-z][A-Z]{1,15}" title="Solo Letras" onkeypress="return ((event.charCode >= 65 && event.charCode >= 90) || (event.charCode >= 97 && event.charCode >= 122))">
+        </div>  
+            <div class="inputfield">
+            <label>Apellido</label>
+            <input type="text" class="input" id="lastname" onkeypress="return ((event.charCode >= 65 && event.charCode >= 90) || (event.charCode >= 97 && event.charCode >= 122))">
+        </div>  
+        <div class="inputfield">
+            <label>Contraseña</label>
+            <input type="password" class="input" id="password"  title="La contraseña debe tener(a,A,0,*)" pattern required="(?=.\d)(?=.[a-z])(?=.\W)(?!.*\s)">
+        </div>  
+        <div class="inputfield">
+            <label>Confirmar Contraseña</label>
+            <input type="password" class="input" id="comfirpass">
+        </div> 
+            <div class="inputfield">
+            <label>Genero</label>
+            <div class="custom_select">
+                <select>
+                <option value="">Seleciona</option>
+                <option value="male">Maculino</option>
+                <option value="female">Femenino</option>
+                </select>
+            </div>
+        </div> 
+            <div class="inputfield">
+            <label>Correo Electronico</label>
+            <input type="text" class="input" id="email">
+        </div> 
+        <div class="inputfield">
+            <label>Número de telefono</label>
+            <input type="text" class="input" id="cell" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
+        </div> 
+        <div class="inputfield">
+            <label>Dirección</label>
+            <textarea class="textarea" id="street"></textarea>
+        </div> 
+        <div class="inputfield">
+            <label>Codigo Postal</label>
+            <input type="text" class="input" id="postalcode" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
+        </div> 
+        <div class="inputfield terms">
+            <label class="check">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+            </label>
+            <p>Acepto Terminos y Condiciones</p>
+            <br>
+        </div> 
+        <span id="mensaje"></span>
+        <div class="inputfield">
+            <input type="submit" onclick="validar()" value="Registrarse" class="btn btnAction">
+        </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- footer section  -->
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>Kithome</h3>
+            <a href="{% url 'home' %}"> <i class="fas fa-arrow-right"></i> Inicio</a>
+            <a href="{% url 'shop' %}"> <i class="fas fa-arrow-right"></i> Tienda</a>
+            <a href="{% url 'about' %}"> <i class="fas fa-arrow-right"></i> Nosotros</a>
+            <a href="{% url 'team' %}"> <i class="fas fa-arrow-right"></i> Equipo</a>
+            <a href="{% url 'contact' %}"> <i class="fas fa-arrow-right"></i> Contactanos</a>
+        </div>
+
+        <div class="box">
+            <h3>Mi tienda</h3>
+            <a href="#"> <i class="fas fa-arrow-right"></i> mi pedido</a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> mi lista de deseos</a>
+            <a href="{% url 'perfil' %}"> <i class="fas fa-arrow-right"></i> mi perfil</a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> mis favoritos</a>
+            <a href="#"> <i class="fas fa-arrow-right"></i> terminos y condiciones</a>
+        </div>
+
+        <div class="box">
+            <h3>extra links</h3>
+            <a href="#"> <i class="fab fa-facebook-f"></i> facebook</a>
+            <a href="#"> <i class="fab fa-twitter"></i> twitter</a>
+            <a href="#"> <i class="fab fa-instagram"></i> instagram</a>
+            <a href="#"> <i class="fab fa-linkedin"></i> linkedin</a>
+            <a href="#"> <i class="fab fa-pinterest"></i> pinterest</a>
+        </div>
+
+        <div class="box">
+            <h3>noticias</h3>
+            <p>suscribete para obtener actualizaciones</p>
+            <form action="">
+                <input type="email" name="" placeholder="ingresa tu email" id="">
+                <input type="submit" value="suscribete" class="btn">
+            </form>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="credit">
+    Trabajo Grupal Seccion 005D
+</section>
+
+<!-- custom js file link  -->
+<script src="{% static 'menu/js/script.js' %}"></script>
+
+<!-- Script validacion -->
+<script src="{% static 'menu/js/validacion.js' %}"></script>
+    
+</body>
+</html>
