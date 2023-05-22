@@ -79,7 +79,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.oracle',
         'NAME': '127.0.0.1:1521/orcl',
         'USER': 'kithome',
-        'PASSWORD': 'kt_777',
+        'PASSWORD': 'kithome777',
         'TEST':{
             'USER': 'default_test',
             'TBLSPACE': 'default_test_tbls',
@@ -129,5 +129,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL = '/media'
+MEDIA_URL = '/media/'
 MEDIA_ROOT= os.path.join (BASE_DIR, 'media')
