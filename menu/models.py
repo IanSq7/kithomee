@@ -45,7 +45,7 @@ class Venta(models.Model):
     idUsuario = models.ForeignKey(Usuario, on_delete=models.CASCADE)
 
     def _str_ (self) -> str:
-        return self.nombreVenta + ' ' + self.total + ' ' + self.idUsuario
+        return self.nombreVenta + ' ' + self.total + ' ' + self.idUsuario + ' ' + self.estado
 
 
 
