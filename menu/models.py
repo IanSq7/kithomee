@@ -54,7 +54,7 @@ class Categoria (models.Model):
     nombre = models.CharField (max_length=100)
 
     def _str_ (self) -> str:
-        return self.nombre
+        return self.nombre 
 
 
 class Region (models.Model):
@@ -104,7 +104,7 @@ class Producto (models.Model):
     idCategoria = models.ForeignKey (Categoria, on_delete=models.CASCADE)
 
     def _str_ (self) -> str:
-        return self.nombre + ' ' + self.idProducto 
+        return self.nombre  
 
 
 
