@@ -100,12 +100,12 @@ class Producto (models.Model):
     descripcion = models.CharField (max_length=100)
     precio = models.IntegerField ()
     estado = models.CharField (max_length=50)
-    foto = models.ImageField 
+    foto = models.ImageField(upload_to="productos") 
     stock = models.IntegerField ()
     idCategoria = models.ForeignKey (Categoria, on_delete=models.CASCADE)
 
     def _str_ (self) -> str:
-        return self.nombre  
+        return self.nombre  + ' ' + self.idCategoria
 
 
 

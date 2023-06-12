@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib.auth import authenticate, login
 
 
 # Create your views here.
@@ -61,3 +62,6 @@ def sofaredondo (request):
 def team (request):
     return render (request, 'menu/team.html')
     
+# inicio se sesion / cierre de sesion
+
+
