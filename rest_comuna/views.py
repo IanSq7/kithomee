@@ -25,7 +25,7 @@ def lista_comuna(request):
 
 
 # Create your views here. aqui van los de las rest
-
+# Faltan delete y put
 
 
 
