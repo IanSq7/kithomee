@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'menu',
     'rest_comuna',
+    'rest_framework.authtoken'
     
 ]
 
