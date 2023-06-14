@@ -8,12 +8,13 @@ from .serializers import ComunaSerializer
 from menu.models import Comuna
 @csrf_exempt
 @api_view(['GET','POST'])
+@permission_classes((IsAuthenticated,))
 def lista_comuna(request):
     if request.method == 'GET':
         comuna=Comuna.objects.all()
         serializer=ComunaSerializer(comuna, many=True)
-        return Response(serializer.data)
-    elif request.method == 'POST':
+        return Response(serializer.data)           
+    if request.method == 'POST':
         data = JSONParser().parse(request)
         serializer = ComunaSerializer(data=data)
         if serializer.is_valid():
@@ -24,6 +25,53 @@ def lista_comuna(request):
 
 
 
+
+# ORDEN DE LOS PUT... Y USO DE IF
+
+@api_view(['GET','PUT','DELETE'])
+@permission_classes((IsAuthenticated,))
+def detalle_comuna (request, id):
+    try: 
+        Comuna=Comuna.objects.get(idComuna=id)
+    except Comuna.DoesNotExist:
+        return Response(status=status.HTTP_404_NOT_FOUND)
+    if request.method == 'GET':
+        serializer=ComunaSerializer(comuna)
+        return Response(serializer.data)
+    if request.method == 'PUT':
+        data = JSONParser().parser(request)
+        serializer = ComunaSerializer(comuna, data=data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        else:
+      	    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    elif request.method == 'DELETE':
+        comuna.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+)
 # Create your views here. aqui van los de las rest
 # Faltan delete y put
 
