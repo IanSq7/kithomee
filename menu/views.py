@@ -43,6 +43,17 @@ def recovery (request):
 
 def register (request):
     return render (request, 'menu/register.html')
+    #if request.method == "POST":
+    #  form = CustomUserCreationForm(request.POST)
+    # if form.is_valid():
+        #    form.save()
+        #   username = form.cleaned_data.get("username")
+        #  messages.success(request, f"Account created for {username}!")
+        # return redirect("inicio")
+    #else:
+    #   form = CustomUserCreationForm()
+    # return render (request, 'menu/register.html', {"form": form})
+
 
 def shop (request):
     return render (request, 'menu/shop.html')
@@ -61,7 +72,9 @@ def sofaredondo (request):
 
 def team (request):
     return render (request, 'menu/team.html')
-    
+
 # inicio se sesion / cierre de sesion
+
+
 
 
