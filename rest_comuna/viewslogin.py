@@ -12,16 +12,16 @@ from rest_framework.authtoken.models import Token
 def login(request):
     data = JSONParser().parse(request)
     
-    username = data['username']
-    password = data['password']
+    username = data['usuario']
+    password = data['contraseña']
     try:
-        user = User.objects.get(username=username)
-    except User.DoesNotExist:
+        user = user.objects.get(username=username)
+    except user.DoesNotExist:
         return Response("Usuario invalido")
     # validacion
     pass_valido = check_password(password, user.password)
     if not pass_valido:
-        return Response("Password incorrecta")
+        return Response("Contraseña incorrecta")
     
     #crear o recuperar el token
     token, created = Token.objects.get_or_create(user=user)
