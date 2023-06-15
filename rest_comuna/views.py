@@ -9,6 +9,7 @@ from menu.models import Comuna
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
 
+
 @csrf_exempt
 @api_view(['GET','POST'])
 @permission_classes((IsAuthenticated,))
@@ -39,18 +40,18 @@ def detalle_comuna (request, id):
     except Comuna.DoesNotExist:
         return Response(status=status.HTTP_404_NOT_FOUND)
     if request.method == 'GET':
-        serializer=ComunaSerializer(comuna)
+        serializer=ComunaSerializer(Comuna)
         return Response(serializer.data)
     if request.method == 'PUT':
         data = JSONParser().parser(request)
-        serializer = ComunaSerializer(comuna, data=data)
+        serializer = ComunaSerializer(Comuna, data=data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         else:
       	    return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     elif request.method == 'DELETE':
-        comuna.delete()
+        Comuna.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
@@ -74,7 +75,7 @@ def detalle_comuna (request, id):
 
 
 
-)
+
 # Create your views here. aqui van los de las rest
 # Faltan delete y put
 
