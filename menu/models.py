@@ -13,7 +13,7 @@ class Pregunta (models.Model):
     nombre = models.CharField(max_length=100)
 
     def _str_ (self):
-        return self.nombre
+        return self.nombre + ' ' + self.idPregunta
 
 
 class Usuario(models.Model):

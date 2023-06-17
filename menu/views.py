@@ -42,18 +42,16 @@ def recovery (request):
     return render (request, 'menu/recovery.html')
 
 def register (request):
-    return render (request, 'menu/register.html')
-    #if request.method == "POST":
-    #  form = CustomUserCreationForm(request.POST)
-    # if form.is_valid():
-        #    form.save()
-        #   username = form.cleaned_data.get("username")
-        #  messages.success(request, f"Account created for {username}!")
-        # return redirect("inicio")
-    #else:
-    #   form = CustomUserCreationForm()
-    # return render (request, 'menu/register.html', {"form": form})
-
+    if request.method == "POST":
+        form=CustomUserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get("username")
+            messages.sucess(request, f"Cuenta creada for {username}")
+            return redirect("inicio")
+        else:
+            form=CustomUserCreationForm()
+        return render(request, 'menu/register.html')
 
 def shop (request):
     return render (request, 'menu/shop.html')
