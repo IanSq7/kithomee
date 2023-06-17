@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+
+    <!-- font link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <!-- Link css base  -->
+    <link rel="stylesheet" href="{% static 'menu/css/style.css' %}">
+
+    <!-- Link css detalles-->
+    <link rel="stylesheet" href="{% static 'menu/css/detalles.css' %}">
+
+</head>
+
+<body>
+
+    <!-- header starts  -->
+
+    <header class="header">
+
+        <a href="{% url 'home' %}" class="logo"> <i class="fas fa-lightbulb"></i> KitHome </a>
+
+        <form action="" class="search-form">
+            <input type="search" placeholder="Buscar..." id="search-box">
+            <label for="search-box" class="fas fa-search"></label>
+        </form>
+
+        <div class="icons">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <div id="search-btn" class="fas fa-search"></div>
+            <div id="cart-btn" class="fas fa-shopping-cart"></div>
+            <div id="login-btn" class="fas fa-user"></div>
+        </div>
+
+    </header>
+
+    <!-- header ends  -->
+
+    <!-- boton cierre  -->
+
+    <div id="closer" class="fas fa-times"></div>
+
+    <!-- navbar  -->
+
+    <nav class="navbar">
+        <a href="{% url 'home' %}">Inicio</a>
+        <a href="{% url 'shop' %}">Tienda</a>
+        <a href="{% url 'about' %}">Nosotros</a>
+        <a href="{% url 'team' %}">Equipo</a>
+        <a href="{% url 'contact' %}">Contactanos</a>
+    </nav>
+
+    <!-- carrito  -->
+
+    <div class="shopping-cart">
+
+        <div class="box">
+            <i class="fas fa-times"></i>
+            <img src="{% static 'menu/img/cart-img-1.jpg' %}" alt="">
+            <div class="content">
+                <h3>nombre mueble</h3>
+                <span class="quantity"> 1 </span>
+                <span class="multiply"> x </span>
+                <span class="price"> $25.000 </span>
+            </div>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-times"></i>
+            <img src="{% static 'menu/img/cart-img-2.jpg' %}" alt="">
+            <div class="content">
+                <h3>nombre mueble</h3>
+                <span class="quantity"> 1 </span>
+                <span class="multiply"> x </span>
+                <span class="price"> $25.000 </span>
+            </div>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-times"></i>
+            <img src="{% static 'menu/img/cart-img-3.jpg' %}" alt="">
+            <div class="content">
+                <h3>nombre mueble</h3>
+                <span class="quantity"> 1 </span>
+                <span class="multiply"> x </span>
+                <span class="price"> $25.000 </span>
+            </div>
+        </div>
+
+        <div class="box">
+            <i class="fas fa-times"></i>
+            <img src="{% static 'menu/img/cart-img-4.jpg' %}" alt="">
+            <div class="content">
+                <h3>nombre mueble</h3>
+                <span class="quantity"> 1 </span>
+                <span class="multiply"> x </span>
+                <span class="price"> $25.000 </span>
+            </div>
+        </div>
+
+        <h3 class="total"> total : <span>$100.000</span> </h3>
+
+        <a href="{% url 'checkit' %}" class="btn">Pagar</a>
+
+    </div>
+
+    <!-- inicio de sesion  -->
+
+    <div class="login-form">
+
+        <form action="">
+            <h3>Inicio de Sesión</h3>
+            <input type="email" placeholder="ingresa tu email" class="box">
+            <input type="password" placeholder="ingresa tu contraseña" class="box">
+            <div class="remember">
+                <input type="checkbox" name="" id="remember-me">
+                <label for="remember-me">Recuerdame</label>
+            </div>
+            <input type="submit" value="Iniciar sesión" class="btn">
+            <p>¿Olvidaste tu contraseña? <a href="{% url 'recovery' %}">click aqui</a></p>
+            <p>¿No tienes una cuenta? <a href="{% url 'register' %}">Crea una Ahora</a></p>
+        </form>
+
+    </div>
+
+    <section class="heading">
+        <h3></h3>
+        <p> <a href="{% url 'home' %}">Inicio</a> / <span>Detalles</span> </p>
+    </section>
+
+    <!-- Detalles del producto -->
+
+    <section class="about">
+
+        <div class="image">
+            <img src="{% static 'menu/img/sofaformal.jpg' %}" alt="">
+        </div>
+
+        <div class="content">
+            <span>Tienda / Escritorios</span>
+            <h3>Escritorio home office</h3>
+            <h3>$129.990</h3>
+            <h3 id="detalle">Detalles del Producto</h3>
+            <br>
+            <p>Un diseño de líneas sencillas. Como la parte posterior está bien acabada y es igual de bonito por todos los lados, puede ponerse en el centro de la habitación.</p>
+            
+            <input type="number" value="1">
+            <a href="#" class="btn">Agregar al Carrito</a>
+        </div>
+
+    </section>
+
+
+
+    <!-- footer section  -->
+
+    <section class="footer">
+
+        <div class="box-container">
+
+            <div class="box">
+                <h3>Kithome</h3>
+                <a href="{% url 'home' %}"> <i class="fas fa-arrow-right"></i> Inicio</a>
+                <a href="{% url 'shop' %}"> <i class="fas fa-arrow-right"></i> Tienda</a>
+                <a href="{% url 'about' %}"> <i class="fas fa-arrow-right"></i> Nosotros</a>
+                <a href="{% url 'team' %}"> <i class="fas fa-arrow-right"></i> Equipo</a>
+                <a href="{% url 'contact' %}"> <i class="fas fa-arrow-right"></i> Contactanos</a>
+            </div>
+
+            <div class="box">
+                <h3>Mi tienda</h3>
+                <a href="#"> <i class="fas fa-arrow-right"></i> mi pedido</a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> mi lista de deseos</a>
+                <a href="{% url 'perfil' %}"> <i class="fas fa-arrow-right"></i> mi perfil</a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> mis favoritos</a>
+                <a href="#"> <i class="fas fa-arrow-right"></i> terminos y condiciones</a>
+            </div>
+
+            <div class="box">
+                <h3>Redes sociales</h3>
+                <a href="#"> <i class="fab fa-facebook-f"></i> facebook</a>
+                <a href="#"> <i class="fab fa-twitter"></i> twitter</a>
+                <a href="#"> <i class="fab fa-instagram"></i> instagram</a>
+                <a href="#"> <i class="fab fa-linkedin"></i> linkedin</a>
+                <a href="#"> <i class="fab fa-pinterest"></i> pinterest</a>
+            </div>
+
+            <div class="box">
+                <h3>noticias</h3>
+                <p>suscribete para obtener actualizaciones</p>
+                <form action="">
+                    <input type="email" name="" placeholder="ingresa tu email" id="">
+                    <input type="submit" value="subscribe" class="btn">
+                </form>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="credit">
+        Trabajo Grupal Seccion 005D
+    </section>
+
+    <!-- custom js file link  -->
+    <script src="{% static 'menu/js/script.js' %}"></script>
+
+</body>
+
+</html>
