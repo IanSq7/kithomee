@@ -1,15 +1,15 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, messages
 from django.contrib.auth import authenticate, login
+
 from kithomee.Producto.models import Producto
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.backends import BaseBackend
+from django.contrib.auth.models import check_password
+
 # Create your views here.
-class ProductList(APIView):
-
-
-    def get()
-
 def home (request):
     return render(request,'menu/home.html')
 
@@ -48,16 +48,33 @@ def recovery (request):
 
 def register (request):
     return render (request, 'menu/register.html')
-    #if request.method == "POST":
-    #  form = CustomUserCreationForm(request.POST)
-    # if form.is_valid():
-        #    form.save()
-        #   username = form.cleaned_data.get("username")
-        #  messages.success(request, f"Account created for {username}!")
-        # return redirect("inicio")
-    #else:
-    #   form = CustomUserCreationForm()
-    # return render (request, 'menu/register.html', {"form": form})
+
+
+def iniciar_session (request):
+    usuario=request.POST['usuario']
+    contra1=request.POST['contra']
+    try:
+        user1=user.objects.GET(username=usuario1)
+    except user.DoesNotExist:
+        messages.error(request, 'El usuario o la contraseña son incorrectos')
+        return redirect ('Iniciar')
+    
+    pass_valida=check_password(contra1,user1.password)
+    if not pass_valida:
+        messages.error(request,'El usuario o la contraseña son incorrectos')
+        
+        return redirect ('Iniciar')
+    usuario2=usuario.objects.get(username=usuario1,contrasennia=contra1)
+    user=authenticate(username=usuario1,password=contra1)
+    if user is not None:
+        login(request, user)
+        if(usuario2.tipousuario.idTipoUsuario == 1):
+            return redirect("menu/index.html")
+        else:
+            contexto = {"usuario":usuario2}
+            return render(request,"menu/index.html",contexto)
+    else:
+        print("B")
 
 
 def shop (request):
@@ -123,4 +140,16 @@ def veladordetalle2 (request):
 
 
 
-
+# def user_login(request):
+    '''
+    Login
+    '''
+    #if request.method == 'POST':
+    ##        user = authenticate(
+    #           username=request.POST['email'],
+    #          password=request.POST['password']
+    #     )
+        #    if user is not None:
+        #       login(request, user)
+        #       return redirect(dashboard)
+        
