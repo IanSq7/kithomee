@@ -1,9 +1,14 @@
 from django.shortcuts import render
 from django.contrib.auth import authenticate, login
-
+from kithomee.Producto.models import Producto
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 # Create your views here.
+class ProductList(APIView):
 
+
+    def get()
 
 def home (request):
     return render(request,'menu/home.html')
