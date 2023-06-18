@@ -4,6 +4,7 @@ from django.contrib.auth import authenticate, login
 from kithomee.Producto.models import Producto
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from kithomee.products.serializers import ProductoSerializer
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.backends import BaseBackend
@@ -104,11 +105,11 @@ def sofahogardetalle (request):
 def escritorios (request):
     return render (request, 'menu/escritorios.html')
 
+def escritoriodetalle (request):
+    return render (request, 'menu/escritoriodetalle.html')
+
 def escritoriodetalle1 (request):
     return render (request, 'menu/escritoriodetalle1.html')
-
-def escritoriodetalle2 (request):
-    return render (request, 'menu/escritoriodetalle2.html')
 
 def roperos (request):
     return render (request, 'menu/roperos.html')
@@ -119,7 +120,7 @@ def roperodetalle1 (request):
 def roperodetalle2 (request):
     return render (request, 'menu/roperodetalle2.html')
 
-def sillasoficina (request):
+def sillasoficinas (request):
     return render (request, 'menu/sillasoficina.html')
 
 def sillaoficinadetalle1 (request):
@@ -153,3 +154,15 @@ def veladordetalle2 (request):
         #       login(request, user)
         #       return redirect(dashboard)
         
+class ProductList(APIView):
+    def get(self, request, format=None):
+        products = Producto.objects.all()
+        serializer = ProductoSerializer(products, many=True)
+        return Response(serializer.data)
+    
+    def post(self, request, format=None):
+        serializer = ProductoSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

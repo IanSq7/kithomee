@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from .views import home, about, adminvista,banqueta,changepassword,checkit,comoda,contact,lampara,lamparatecho,perfil,recovery,register,shop,silla,sitial,sofa1,sofaredondo,team,sofahogar,sofahogardetalle,escritorios,escritoriodetalle,escritoriodetalle1,roperos,roperodetalle1,roperodetalle2,sillasoficinas,sillaoficinadetalle1,sillaoficinadetalle2,veladores,veladordetalle1,veladordetalle2
+from .views import home, about, adminvista,banqueta,changepassword,checkit,comoda,contact,lampara,lamparatecho,perfil,recovery,register,shop,silla,sitial,sofa1,sofaredondo,team,sofahogar,sofahogardetalle,escritorios,escritoriodetalle,escritoriodetalle1,roperos,roperodetalle1,roperodetalle2,sillasoficinas,sillaoficinadetalle1,sillaoficinadetalle2,veladores,veladordetalle1,veladordetalle2,views
 urlpatterns = [
     path('',home,name="home"),
     path('about/',about,name="about"),
@@ -34,7 +34,8 @@ urlpatterns = [
     path('sillaoficinadetalle2/',sillaoficinadetalle2,name="sillaoficinadetalle2"),
     path('veladores/',veladores,name="veladores"),
     path('veladordetalle1/',veladordetalle1,name="veladordetalle1"),
-    path('veladordetalle2/',veladordetalle2,name="veladordetalle2")
+    path('veladordetalle2/',veladordetalle2,name="veladordetalle2"),
+    
 
 
 ]
