@@ -24,7 +24,7 @@ urlpatterns = [
     path('',include('menu.urls')),
     path('api/',include('rest_comuna.urls')),
     path('api/',include('rest_pregunta.urls')),
-    path('products/', include('products.urls')),
+
 ]
 
 if settings.DEBUG:

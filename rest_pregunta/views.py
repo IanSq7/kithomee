@@ -12,7 +12,7 @@ from rest_framework.permissions import IsAuthenticated
 @csrf_exempt
 @api_view(['GET','POST'])
 @permission_classes((IsAuthenticated,))
-def lista_comuna(request):
+def lista_pregunta(request):
     if request.method == 'GET':
         pregunta=Pregunta.objects.all()
         serializer=PreguntaSerializer(pregunta, many=True)

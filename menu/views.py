@@ -1,14 +1,10 @@
-from django.shortcuts import render, redirect, messages
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-
-from kithomee.Producto.models import Producto
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from kithomee.products.serializers import ProductoSerializer
-
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.backends import BaseBackend
-from django.contrib.auth.models import check_password
+
 
 # Create your views here.
 def home (request):

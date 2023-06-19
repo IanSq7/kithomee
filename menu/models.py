@@ -104,10 +104,6 @@ class Producto (models.Model):
     stock = models.IntegerField ()
     idCategoria = models.ForeignKey (Categoria, on_delete=models.CASCADE)
 
-    class Meta:
-        verbose_name_pliral = "Productos"
-        verbose_name = "Producto"
-
     def _str_ (self) -> str:
         return self.nombre  + ' ' + self.idCategoria
 
