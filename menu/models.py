@@ -63,13 +63,13 @@ class Region (models.Model):
     nombre = models.CharField (max_length=100)
 
     def _str_ (self) -> str:
-        return self.nombre
+        return self.idRegion
 
 
 
 class Comuna (models.Model):
     idComuna = models.AutoField (primary_key=True, verbose_name= 'Código de comuna' )
-    nombreComuna = models.CharField (max_length=100)
+    nombreComuna = models.CharField (max_length=200)
     idRegion = models.ForeignKey(Region, on_delete=models.CASCADE)
 
     def _str_ (self) -> str :

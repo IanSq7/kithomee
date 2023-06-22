@@ -2,8 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from django.contrib.auth.decorators import login_required
-from django.contrib.auth.backends import BaseBackend
+
 
 
 # Create your views here.
@@ -45,33 +44,6 @@ def recovery (request):
 
 def register (request):
     return render (request, 'menu/register.html')
-
-
-def iniciar_session (request):
-    usuario=request.POST['usuario']
-    contra1=request.POST['contra']
-    try:
-        user1=user.objects.GET(username=usuario1)
-    except user.DoesNotExist:
-        messages.error(request, 'El usuario o la contraseña son incorrectos')
-        return redirect ('Iniciar')
-    
-    pass_valida=check_password(contra1,user1.password)
-    if not pass_valida:
-        messages.error(request,'El usuario o la contraseña son incorrectos')
-        
-        return redirect ('Iniciar')
-    usuario2=usuario.objects.get(username=usuario1,contrasennia=contra1)
-    user=authenticate(username=usuario1,password=contra1)
-    if user is not None:
-        login(request, user)
-        if(usuario2.tipousuario.idTipoUsuario == 1):
-            return redirect("menu/index.html")
-        else:
-            contexto = {"usuario":usuario2}
-            return render(request,"menu/index.html",contexto)
-    else:
-        print("B")
 
 
 def shop (request):
@@ -133,6 +105,7 @@ def veladordetalle1 (request):
 
 def veladordetalle2 (request):
     return render (request, 'menu/veladordetalle2.html')
+
 # inicio se sesion / cierre de sesion
 
 
@@ -150,15 +123,3 @@ def veladordetalle2 (request):
         #       login(request, user)
         #       return redirect(dashboard)
         
-class ProductList(APIView):
-    def get(self, request, format=None):
-        products = Producto.objects.all()
-        serializer = ProductoSerializer(products, many=True)
-        return Response(serializer.data)
-    
-    def post(self, request, format=None):
-        serializer = ProductoSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -35,6 +35,4 @@ urlpatterns = [
     path('veladores/',veladores,name="veladores"),
     path('veladordetalle1/',veladordetalle1,name="veladordetalle1"),
     path('veladordetalle2/',veladordetalle2,name="veladordetalle2"),
-
-
 ]
