@@ -41,7 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'menu',
     'rest_comuna',
-    'rest_framework.authtoken'
+    'rest_framework.authtoken',
     
 ]
 
@@ -91,11 +91,14 @@ WSGI_APPLICATION = 'kithomee.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.oracle",
-        "NAME": "oracle",
+        "NAME": "127.0.0.1:1521/oracle",
         "USER": "kithomee",
         "PASSWORD": "kt123456789",
-        "HOST": "127.0.0.1",
-        "PORT": "1521",
+        'TEST':{
+            'USER': 'default_test',
+            'TBLSPACE':'default_test_tbls',
+            'TBLSPACE_TMP': 'default_text_tbls_tmp',
+        }
     }
 }
 
