@@ -85,17 +85,16 @@ WSGI_APPLICATION = 'kithomee.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.oracle',
-        'NAME': '127.0.0.1:1521/orcl',
-        'USER': 'kithomee',
-        'PASSWORD': 'kt123456789',
-        'TEST':{
-            'USER': 'default_test',
-            'TBLSPACE': 'default_test_tbls',
-            'TBLSPACE_TMP': 'default_text_tbls_tmp',
-        },
+    "default": {
+        "ENGINE": "django.db.backends.oracle",
+        "NAME": "oracle",
+        "USER": "kithomee",
+        "PASSWORD": "kt123456789",
+        "HOST": "127.0.0.1",
+        "PORT": "1521",
     }
 }
 
