@@ -91,7 +91,7 @@ WSGI_APPLICATION = 'kithomee.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.oracle",
-        "NAME": "127.0.0.1:1521/orcl",
+        "NAME": "127.0.0.1",
         "USER": "kithomee",
         "PASSWORD": "kt123456789",
         'TEST':{
