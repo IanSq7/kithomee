@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
+from menu.models import Producto
+
 
 
 # Create your views here.
@@ -47,7 +49,32 @@ def register (request):
 
 
 def shop (request):
-    return render (request, 'menu/shop.html')
+    productos = Producto.objects.all()
+    return render (request, 'menu/shop.html', {'productos':productos})
+
+def agregar_producto(request, producto_id):
+    carrito = Cart(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.add(producto)
+    return redirect("shop")
+
+def agregar_producto(request, producto_id):
+    carrito = Cart(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.remove(producto)
+    return redirect("shop")
+
+def agregar_producto(request, producto_id):
+    carrito = Cart(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.decrement(producto)
+    return redirect("shop")
+
+def agregar_producto(request, producto_id):
+    carrito = Cart(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.clear()
+    return redirect("shop")
 
 def silla (request):
     return render (request, 'menu/silla.html')
