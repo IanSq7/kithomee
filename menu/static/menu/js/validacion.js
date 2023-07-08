@@ -1,5 +1,5 @@
 var input = document.getElementById('name');
-input.oninvalid = function(event) {
+input.oninvalid =function(event) {
     event.target.setCustomValidity('Solo Letras')
 }
 

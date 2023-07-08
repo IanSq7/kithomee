@@ -8,7 +8,7 @@ from .models import Usuario, Venta,Region, Comuna, Direccion
 
 
 class CustomUserCreationForm(UserCreationForm):
-    username = forms.CharField(label="nombre de usuario", min_length=4, max_length=150,required=True)
+    username = forms.CharField(label="nombre completo", min_length=4, max_length=150,required=True)
     email = forms.EmailField(label="correo electrónico",required=True)
     password1 = forms.CharField(label="contraseña", widget=forms.PasswordInput, required=True)
     password2 = forms.CharField(
