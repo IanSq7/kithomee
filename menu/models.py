@@ -131,4 +131,10 @@ class Detalle (models.Model):
         return self.cantidad + ' ' + self.idProducto
 
 
+class Gestion (models.Model):
+    id=models.AutoField(primary_key=True)
+    nombre=models.CharField(max_length=100)
+    valor=models.IntegerField()
 
+    def _str_(self) -> str:
+        return self.nombre

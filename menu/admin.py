@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Rol, Pregunta, Usuario, Venta, Categoria, Region, Comuna, Direccion, Producto, Despacho, Detalle
+from .models import Rol, Pregunta, Usuario, Venta, Categoria, Region, Comuna, Direccion, Producto, Despacho, Detalle, Gestion
 # Register your models here.
 
 admin.site.register (Rol)
@@ -13,3 +13,4 @@ admin.site.register (Direccion)
 admin.site.register (Producto)
 admin.site.register (Despacho)
 admin.site.register (Detalle)
+admin.site.register (Gestion)
