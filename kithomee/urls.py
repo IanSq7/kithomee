@@ -25,8 +25,8 @@ from menu.views import agregar_producto, eliminar_producto, limpiar_carrito, res
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('menu.urls')),
-    path('api/',include('rest_comuna.urls')),
-    path('api/',include('rest_pregunta.urls')),
+    path('api/v1/',include('rest_comuna.urls')),
+    path('api/v2/',include('rest_pregunta.urls')),
 
 ]
 

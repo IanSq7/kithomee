@@ -4,4 +4,4 @@ from menu.models import Comuna
 class ComunaSerializer(serializers.ModelSerializer):
     class Meta: 
         model = Comuna
-        fields =['idComuna','nombreComuna', 'idRegion']
+        fields = '__all__'

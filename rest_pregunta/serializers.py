@@ -4,4 +4,4 @@ from menu.models import Pregunta
 class PreguntaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Pregunta
-        fields = ['idPregunta','nombre']
+        fields = '__all__'
