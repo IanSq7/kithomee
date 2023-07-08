@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from menu.carrito import Carrito
 
 from menu.models import Producto
 
@@ -51,30 +52,6 @@ def register (request):
 def shop (request):
     productos = Producto.objects.all()
     return render (request, 'menu/shop.html', {'productos':productos})
-
-def agregar_producto(request, producto_id):
-    carrito = Cart(request)
-    producto = Producto.objects.get(id=producto_id)
-    carrito.add(producto)
-    return redirect("shop")
-
-def agregar_producto(request, producto_id):
-    carrito = Cart(request)
-    producto = Producto.objects.get(id=producto_id)
-    carrito.remove(producto)
-    return redirect("shop")
-
-def agregar_producto(request, producto_id):
-    carrito = Cart(request)
-    producto = Producto.objects.get(id=producto_id)
-    carrito.decrement(producto)
-    return redirect("shop")
-
-def agregar_producto(request, producto_id):
-    carrito = Cart(request)
-    producto = Producto.objects.get(id=producto_id)
-    carrito.clear()
-    return redirect("shop")
 
 def silla (request):
     return render (request, 'menu/silla.html')
@@ -134,61 +111,28 @@ def veladordetalle2 (request):
     return render (request, 'menu/veladordetalle2.html')
 
 #CARRITO DE COMPRAS
-class Cart:
-    def __init__(self, request):
-        self.request = request
-        self.session = request.session
-        cart = self.session.get("cart")
-        if not cart:
-            cart = self.session["cart"] = {}
-        self.cart = cart
-    
-    #AÑADIR PRODUCTO
-    def add(self, Producto):
-        if str(Producto) not in self.cart.keys():
-            self.cart[Producto.id] = {
-                "product_id": Producto.name,
-                "name": Producto.name,
-                "quantity": 1,
-                "price": str(Producto.price),
-                "image": Producto.image.url
-            }
-        else:
-            for key, value in self.cart.items():
-                if key == str(Producto.id):
-                    value["quantity"] = value["quantity"] + 1
-                    break
-        self.save()
+def agregar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.agregar(producto=producto)
+    return redirect("shop")
 
-    #GUARDAR PRODUCTOS EN SESSION
-    def save(self):
-        self.session["cart"] = self.cart
-        self.session.modified = True
+def eliminar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.eliminar(producto=producto)
+    return redirect("shop")
 
-    #ELIMINAR PRODUCTOS
-    def remove(self, Producto):
-        Producto_id = str(Producto.id)
-        if Producto_id in self.cart:
-            del self.cart[Producto_id]
-            self.save()
+def restar_producto(request, producto_id):
+    carrito = Carrito(request)
+    producto = Producto.objects.get(id=producto_id)
+    carrito.restar(producto=producto)
+    return redirect("shop")
 
-    #REDUCIR LA CANTIDAD DE PRODUCTOS
-    def decrement(self, Producto):
-        for key, value in self.cart.items():
-            if key == str(Producto.id):
-                value["quantity"] = value["quantity"] - 1
-                if value["quantity"] < 1:
-                    self.remove(Producto)
-                else:
-                    self.save()
-                break
-            else:
-                print("El producto no existe en el carrito")
-
-    #INICIAR CON EL CARRITO VACIO
-    def clear(self):
-        self.session["cart"] = {}
-        self.session.modified = True
+def limpiar_carrito(request):
+    carrito = Carrito(request)
+    carrito.limpiar()
+    return redirect("shop")
         
 # inicio se sesion / cierre de sesion
 

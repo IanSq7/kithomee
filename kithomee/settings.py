@@ -75,6 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'menu.context_processor.total_carrito',
             ],
         },
     },
@@ -91,7 +92,7 @@ WSGI_APPLICATION = 'kithomee.wsgi.application'
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.oracle",
-        "NAME": "127.0.0.1",
+        "NAME": "XE",
         "USER": "kithomee",
         "PASSWORD": "kt123456789",
         'TEST':{

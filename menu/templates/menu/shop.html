@@ -52,59 +52,6 @@
     <a href="{% url 'contact' %}">Contactanos</a>
 </nav>  
 
-<!-- carrito de compras  -->
-
-<div class="shopping-cart">
-
-    <div class="box">
-        <i class="fas fa-times"></i>
-        <img src="{% static 'menu/img/cart-img-1.jpg' %}" alt="">
-        <div class="content">
-            <h3>nombre mueble</h3>
-            <span class="quantity"> 1 </span>
-            <span class="multiply"> x </span>
-            <span class="price"> $25.000 </span>
-        </div>
-    </div>
-
-    <div class="box">
-        <i class="fas fa-times"></i>
-        <img src="{% static 'menu/img/cart-img-2.jpg' %}" alt="">
-        <div class="content">
-            <h3>nombre mueble</h3>
-            <span class="quantity"> 1 </span>
-            <span class="multiply"> x </span>
-            <span class="price"> $25.000 </span>
-        </div>
-    </div>
-
-    <div class="box">
-        <i class="fas fa-times"></i>
-        <img src="{% static 'menu/img/cart-img-3.jpg' %}" alt="">
-        <div class="content">
-            <h3>nombre mueble</h3>
-            <span class="quantity"> 1 </span>
-            <span class="multiply"> x </span>
-            <span class="price"> $25.000 </span>
-        </div>
-    </div>
-
-    <div class="box">
-        <i class="fas fa-times"></i>
-        <img src="{% static 'menu/img/cart-img-4.jpg' %}" alt="">
-        <div class="content">
-            <h3>nombre mueble</h3>
-            <span class="quantity"> 1 </span>
-            <span class="multiply"> x </span>
-            <span class="price"> $25.000 </span>
-        </div>
-    </div>
-
-    <h3 class="total"> total : <span>$100.000</span> </h3>
-
-    <a href="{% url 'checkit' %}" class="btn">Pagar</a>
-
-</div>
 
 <!-- inicio de sesion -->
 
@@ -129,7 +76,7 @@
     <h3></h3>
     <p> <a href="{% url 'home' %}">Inicio</a> / <span>Tienda</span> </p>
 </section>
-
+<!-- CATEGORIAS -->
 <section class="category">
 
     <h1 class="title"> <span>Categorias</span> <a href="#">ver todo >></a> </h1>
@@ -165,35 +112,49 @@
 
 </section>
 
+<!-- carrito de compras-->
+
+<div class="shopping-cart">
+    <div class="box">
+        <h2>Total: ${{total_carrito}}</h2>
+    </div>
+    <a href="{% url 'checkit' %}" class="btn">Pagar</a>
+    <a href="{% url 'CLS' %}" class="btn">Limpiar</a>
+    <a href="#" class="btn">Guardar</a>
+</div>
+
+<!-- PRODUCTOS -->
 <section class="products">
 
     <h1 class="title"> <span>nuestros productos</span> <a href="#">ver todo >></a> </h1>
 
     <div class="box-container">
-
-        <div class="box">
-            <div class="icons">
-                <a href="#" class="fas fa-shopping-cart"></a>
-                <a href="#" class="fas fa-heart"></a>
-                <a href="{% url 'sofa1' %}" class="fas fa-eye"></a>
-            </div>
-            <div class="image">
-                <img src="{% static 'menu/img/product-2.jpg' %}" alt="">
-            </div>
-            <div class="content">
-                <div class="price">$35.000</div>
-                <h3>Sofa 1 cuerpo</h3>
-                <div class="stars">
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="fas fa-star"></i>
-                    <i class="far fa-star"></i>
-                    <span> (50) </span>
+        {% for producto in productos %}
+        <div class="card" style="height: 500px; width: 500px; margin: 5px 0px;">
+            <div class="box">
+                <div class="icons">
+                    <a href="#" class="fas fa-shopping-cart"></a>
+                    <a href="#" class="fas fa-heart"></a>
+                    <a href="#" class="fas fa-eye"></a>
                 </div>
+                    <div class="image"><img src="{{producto.foto.url}}"></div>
+                    <div class="content, card-body">
+                        <div class="price, card-text"><h2>{{producto.precio}}</h2></div>
+                        <h3 class="card-title">{{producto.nombre}}</h3>
+                        <div class="stars">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+                            <span> (50) </span>
+                        </div>
+                    </div>
             </div>
         </div>
+        {% endfor %} 
 
+        <!--
         <div class="box">
             <div class="icons">
                 <a href="#" class="fas fa-shopping-cart"></a>
@@ -336,6 +297,7 @@
 
 </section>
 
+-->
 
 
 
@@ -354,56 +316,6 @@
 
 
 
-
-<!-- footer section  -->
-
-<section class="footer">
-
-    <div class="box-container">
-
-        <div class="box">
-            <h3>Kithome</h3>
-            <a href="{% url 'home' %}"> <i class="fas fa-arrow-right"></i> Inicio</a>
-            <a href="{% url 'shop' %}"> <i class="fas fa-arrow-right"></i> Tienda</a>
-            <a href="{% url 'about' %}"> <i class="fas fa-arrow-right"></i> Nosotros</a>
-            <a href="{% url 'team' %}"> <i class="fas fa-arrow-right"></i> Equipo</a>
-            <a href="{% url 'contact' %}"> <i class="fas fa-arrow-right"></i> Contactanos</a>
-        </div>
-
-        <div class="box">
-            <h3>Mi tienda</h3>
-            <a href="#"> <i class="fas fa-arrow-right"></i> mi pedido</a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> mi lista de deseos</a>
-            <a href="{% url 'perfil' %}"> <i class="fas fa-arrow-right"></i> mi perfil</a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> mis favoritos</a>
-            <a href="#"> <i class="fas fa-arrow-right"></i> terminos y condiciones</a>
-        </div>
-
-        <div class="box">
-            <h3>Redes sociales</h3>
-            <a href="#"> <i class="fab fa-facebook-f"></i> facebook</a>
-            <a href="#"> <i class="fab fa-twitter"></i> twitter</a>
-            <a href="#"> <i class="fab fa-instagram"></i> instagram</a>
-            <a href="#"> <i class="fab fa-linkedin"></i> linkedin</a>
-            <a href="#"> <i class="fab fa-pinterest"></i> pinterest</a>
-        </div>
-
-        <div class="box">
-            <h3>noticias</h3>
-            <p>suscribete para obtener actualizaciones</p>
-            <form action="">
-                <input type="email" name="" placeholder="ingresa tu email" id="">
-                <input type="submit" value="suscribete" class="btn">
-            </form>
-        </div>
-
-    </div>
-
-</section>
-
-<section class="credit">
-    Trabajo Grupal Seccion 005D
-</section>
 
 <!-- custom js file link  -->
 <script src="{% static 'menu/js/script.js' %}"></script>

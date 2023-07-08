@@ -1,7 +1,7 @@
 def total_carrito(request):
     total = 0
     if request.user.is_authenticated:
-        if request.session["cart"]:
-            for key, value in request.session["cart"].items():
-                total += int(value["precio"])
+        if 'carrito' in request.session:
+            for key, value in request.session["carrito"].items():
+                total += (int(value["precio"])*value["cantidad"])
     return {"total_carrito": total}
