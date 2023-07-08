@@ -7,8 +7,8 @@ class Carrito:
         carrito = self.session.get("carrito")
         if not carrito:
             carrito=self.session["carrito"] = {}
-        else:
-            self.carrito = carrito
+        #else:
+        self.carrito = carrito
     
     #AÑADIR PRODUCTO
     def agregar(self, Producto):

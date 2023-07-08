@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'menu',
     'rest_comuna',
     'rest_framework.authtoken',
+    'bootstrap5',
     
 ]
 
