@@ -19,6 +19,54 @@
     <!-- css register file link -->
     <link rel="stylesheet" href="{% static 'menu/css/register.css' %}">
 
+   <style>
+     .form {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+  }
+
+  .form p {
+    margin-bottom: 15px;
+  }
+
+  .form label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+  }
+
+  .form input[type="text"],
+  .form input[type="password"],
+  .form input[type="email"] {
+    width: 120%;
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+  }
+
+  .form button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .form button[type="submit"]:hover {
+    background-color: #45a049;
+  }
+
+    
+   </style>
+
 </head>
 <body>
 
@@ -151,70 +199,48 @@ event.charCode != [código] Permitiria todos los caracteres exceptuando el que s
 
 onkeypress="console.log(event.charCode) Muestra el codigo del caracter en consola si se desconoce -->
 
+<form class="form" method="post">
+    {% csrf_token %}  
 
-    <div class="wrapper" id="form">
-        <div class="title">
-        Registro
-        </div>
-        <div class="form">
-        <div class="inputfield">
-            <label>Nombre</label>
-            <input type="text" class="input" id="name" pattern="[a-z][A-Z]{1,15}" title="Solo Letras" onkeypress="return ((event.charCode >= 65 && event.charCode >= 90) || (event.charCode >= 97 && event.charCode >= 122))">
-        </div>  
-            <div class="inputfield">
-            <label>Apellido</label>
-            <input type="text" class="input" id="lastname" onkeypress="return ((event.charCode >= 65 && event.charCode >= 90) || (event.charCode >= 97 && event.charCode >= 122))">
-        </div>  
-        <div class="inputfield">
-            <label>Contraseña</label>
-            <input type="password" class="input" id="password"  title="La contraseña debe tener(a,A,0,*)" pattern required="(?=.\d)(?=.[a-z])(?=.\W)(?!.*\s)">
-        </div>  
-        <div class="inputfield">
-            <label>Confirmar Contraseña</label>
-            <input type="password" class="input" id="comfirpass">
-        </div> 
-            <div class="inputfield">
-            <label>Genero</label>
-            <div class="custom_select">
-                <select>
-                <option value="">Seleciona</option>
-                <option value="male">Maculino</option>
-                <option value="female">Femenino</option>
-                </select>
-            </div>
-        </div> 
-            <div class="inputfield">
-            <label>Correo Electronico</label>
-            <input type="text" class="input" id="email">
-        </div> 
-        <div class="inputfield">
-            <label>Número de telefono</label>
-            <input type="text" class="input" id="cell" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
-        </div> 
-        <div class="inputfield">
-            <label>Dirección</label>
-            <textarea class="textarea" id="street"></textarea>
-        </div> 
-        <div class="inputfield">
-            <label>Codigo Postal</label>
-            <input type="text" class="input" id="postalcode" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
-        </div> 
-        <div class="inputfield terms">
-            <label class="check">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-            </label>
-            <p>Acepto Terminos y Condiciones</p>
-            <br>
-        </div> 
-        <span id="mensaje"></span>
-        <div class="inputfield">
-            <input type="submit" onclick="validar()" value="Registrarse" class="btn btnAction">
-        </div>
-        </div>
-    </div>
+    <h3>
+    <p>
+    <label for="id_username">nombre de usuario:</label>
+    <input type="text" name="username" maxlength="150" minlength="4" autofocus="" required="" id="id_username"></h3>
+    
+    
+  </p>
+
+  <h3>
+  <p>
+    <label for="id_password1">contraseña:</label>
+    <input type="password" name="password1" required="" id="id_password1"></h3>
+    
+    
+  </p>
+
+  <h3>
+  <p>
+    <label for="id_password2">confirma tu contraseña:</label>
+    <input type="password" name="password2" required="" id="id_password2"></h3>
+    
+    
+  </p>
+
+  <h3>
+  <p>
+    <label for="id_email">correo electrónico:</label>
+    <input type="email" name="email" maxlength="320" required="" id="id_email"></h3>
+    
+    
+      
+    
+  </p>
+    <button type="submit" id="submit">registrar</button>
 
 
+
+
+</form>
 
 
 
