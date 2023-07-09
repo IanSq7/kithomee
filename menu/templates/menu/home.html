@@ -50,6 +50,12 @@
     <a href="{% url 'about' %}">Nosotros</a>
     <a href="{% url 'team' %}">Equipo</a>
     <a href="{% url 'contact' %}">Contactanos</a>
+{% if user.is_authenticated %}
+    <a href="{% url 'logout' %}">Cerrar Sesión</a>
+    <a href="#">@{{ user.username }}</a>
+{% else %}
+    <a href="{% url 'login' %}">Iniciar Administrador</a>
+{% endif %}
 </nav>
 
 <!-- carrito  -->

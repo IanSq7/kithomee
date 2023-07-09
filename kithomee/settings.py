@@ -28,6 +28,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = 'add_producto'
+LOGOUT_REDIRECT_URL = '/'
 
 # Application definition
 

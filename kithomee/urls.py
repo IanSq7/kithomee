@@ -28,7 +28,8 @@ urlpatterns = [
     path('',include('menu.urls')),
     path('api/v1/',include('rest_comuna.urls')),
     path('api/v2/',include('rest_pregunta.urls')),
-    path('login/', login_view, name='login')
+    path('login/', login_view, name='login'),
+    path('accounts/', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG:
