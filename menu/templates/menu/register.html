@@ -19,6 +19,68 @@
     <!-- css register file link -->
     <link rel="stylesheet" href="{% static 'menu/css/register.css' %}">
 
+    <style>
+        form {
+          max-width: 400px;
+          margin: 0 auto;
+        }
+        
+        label {
+          display: block;
+          margin-top: 10px;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="password"] {
+          width: 100%;
+          padding: 10px;
+          margin-top: 5px;
+          border: 2px solid #ccc;
+          border-radius: 4px;
+          box-sizing: border-box;
+        }
+        
+        input[type="submit"] {
+          background-color: #0f4612;
+          color: white;
+          padding: 10px 20px;
+          border: none;
+          border-radius: 4px;
+          cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+          background-color: #0f4612;
+        }
+        
+        /* Estilos específicos para los elementos del formulario */
+        #first_name,
+        #last_name,
+        #email,
+        #password,
+        #confirm_password {
+          margin-bottom: 10px;
+        }
+        
+        /* Opcional: Agregar estilos para el mensaje de error */
+        .error-message {
+          color: red;
+          margin-top: 5px;
+        }
+        
+        #button-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+          }
+        
+          #button-container button {
+            flex: 1;
+          }
+        
+    </style>
+
 </head>
 <body>
 
@@ -152,83 +214,29 @@ event.charCode != [código] Permitiria todos los caracteres exceptuando el que s
 onkeypress="console.log(event.charCode) Muestra el codigo del caracter en consola si se desconoce -->
 
 
-    <div class="wrapper" id="form">
-        <div class="title">
-        Registro
-        </div>
-        <div class="form">
-        <div class="inputfield">
-            <label>Nombre</label>
-            <input type="text" class="input" id="name" pattern="[a-z][A-Z]{1,15}" title="Solo Letras" onkeypress="return ((event.charCode >= 65 && event.charCode >= 90) || (event.charCode >= 97 && event.charCode >= 122))">
-        </div>  
-            <div class="inputfield">
-            <label>Apellido</label>
-            <input type="text" class="input" id="lastname" onkeypress="return ((event.charCode >= 65 && event.charCode >= 90) || (event.charCode >= 97 && event.charCode >= 122))">
-        </div>  
-        <div class="inputfield">
-            <label>Contraseña</label>
-            <input type="password" class="input" id="password"  title="La contraseña debe tener(a,A,0,*)" pattern required="(?=.\d)(?=.[a-z])(?=.\W)(?!.*\s)">
-        </div>  
-        <div class="inputfield">
-            <label>Confirmar Contraseña</label>
-            <input type="password" class="input" id="comfirpass">
-        </div> 
-            <div class="inputfield">
-            <label>Genero</label>
-            <div class="custom_select">
-                <select>
-                <option value="">Seleciona</option>
-                <option value="male">Maculino</option>
-                <option value="female">Femenino</option>
-                </select>
-            </div>
-        </div> 
-            <div class="inputfield">
-            <label>Correo Electronico</label>
-            <input type="text" class="input" id="email">
-        </div> 
-        <div class="inputfield">
-            <label>Número de telefono</label>
-            <input type="text" class="input" id="cell" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
-        </div> 
-        <div class="inputfield">
-            <label>Dirección</label>
-            <textarea class="textarea" id="street"></textarea>
-        </div> 
-        <div class="inputfield">
-            <label>Codigo Postal</label>
-            <input type="text" class="input" id="postalcode" onkeypress="return (event.charCode >= 48 && event.charCode <= 57)">
-        </div> 
-        <div class="inputfield terms">
-            <label class="check">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-            </label>
-            <p>Acepto Terminos y Condiciones</p>
-            <br>
-        </div> 
-        <span id="mensaje"></span>
-        <div class="inputfield">
-            <input type="submit" onclick="validar()" value="Registrarse" class="btn btnAction">
-        </div>
-        </div>
-    </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<form action="{% url 'register' %}" method="post" id="myForm">
+    {% csrf_token %}
+    <h2><label for="first_name">Nombres</label></h2>
+    <h2><input type="text" id="first_name" name="first_name"></h2>
+    <h2><label for="last_name">Apellidos</label></h2>
+    <input type="text" id="last_name" name="last_name">
+    <h2><label for="email">Email</label></h2>
+    <input type="email" id="email" name="email">
+    <h2><label for="password">Contraseña</label></h2>
+    <input type="password" id="password" name="password">
+    <h2><label for="confirm_password">Confirmar contraseña</label></h2>
+    <input type="password" id="confirm_password" name="confirm_password">
+    
+      <input type="submit" value="Register">
+      <input type="button" value="Limpiar" onclick="resetForm()">
+     
+  </form>
+  
+  <script>
+    function resetForm() {
+      document.getElementById("myForm").reset();
+    }
+  </script>
 
 
 

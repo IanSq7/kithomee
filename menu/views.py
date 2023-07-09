@@ -1,11 +1,14 @@
+from pyexpat.errors import messages
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from menu.carrito import Carrito
 from .forms import ProductoForm
-
+from django.contrib.auth.forms import UserCreationForm
 from menu.models import Producto
+
+
 
 
 
@@ -165,18 +168,3 @@ def listar_productos(request):
 
 # inicio se sesion / cierre de sesion
 
-
-
-# def user_login(request):
-    '''
-    Login
-    '''
-    #if request.method == 'POST':
-    ##        user = authenticate(
-    #           username=request.POST['email'],
-    #          password=request.POST['password']
-    #     )
-        #    if user is not None:
-        #       login(request, user)
-        #       return redirect(dashboard)
-        
