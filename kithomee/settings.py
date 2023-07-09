@@ -32,7 +32,6 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'admin_interface',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -43,12 +42,9 @@ INSTALLED_APPS = [
     'menu',
     'rest_comuna',
     'rest_framework.authtoken',
-    'colorfield',
-    'django.contrib.humanize',
+    'bootstrap5',
     
 ]
-
-X_FRAME_OPTIONS='SAMEORIGIN'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
