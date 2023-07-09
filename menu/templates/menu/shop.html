@@ -187,7 +187,6 @@
 
     <h1 class="title"> <span>nuestros productos</span> <a href="#">ver todo >></a> </h1>
 
-    {% load humanize %}
     <div class="box-container">
         {% for producto in productos %}
         <div class="card" style="height: 500px; width: 500px; margin: 5px 0px;">
@@ -199,8 +198,8 @@
                 </div>
                     <div class="image"><img src="{{producto.foto.url}}"></div>
                     <div class="content, card-body">
-                        <div class="price, card-text"><h2>$ {{producto.precio | intcomma }}</h2></div>
-                        <h3 class="card-title">{{producto.nombre | title}}</h3>
+                        <div class="price, card-text"><h2>{{producto.precio}}</h2></div>
+                        <h3 class="card-title">{{producto.nombre}}</h3>
                         <div class="stars">
                             <i class="fas fa-star"></i>
                             <i class="fas fa-star"></i>
@@ -211,6 +210,11 @@
                         </div>
                     </div>
             </div>
+
+            <div class="card-footer text-center">
+                <a href="{% url 'agregar' producto.id %}" class="btn btn-success">Agregar</a>
+            </div>
+
         </div>
         {% endfor %} 
 
