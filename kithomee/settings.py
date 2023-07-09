@@ -43,9 +43,8 @@ INSTALLED_APPS = [
     'rest_comuna',
     'rest_pregunta',
     'rest_framework.authtoken',
-    'bootstrap5',
-    'crispy_forms',
-    'crispy_bootstrap5',
+
+
     'django.contrib.humanize',
     
 ]
@@ -69,6 +68,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
 ]
 
 ROOT_URLCONF = 'kithomee.urls'

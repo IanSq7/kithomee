@@ -20,7 +20,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
-
+from menu.views import login_view
 from menu.views import agregar_producto, eliminar_producto, limpiar_carrito, restar_producto
 
 urlpatterns = [
@@ -28,6 +28,7 @@ urlpatterns = [
     path('',include('menu.urls')),
     path('api/v1/',include('rest_comuna.urls')),
     path('api/v2/',include('rest_pregunta.urls')),
+    path('login/', login_view, name='login')
 ]
 
 if settings.DEBUG:

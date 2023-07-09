@@ -168,3 +168,23 @@ def listar_productos(request):
 
 # inicio se sesion / cierre de sesion
 
+from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect
+from .forms import LoginForm
+
+def login_view(request):
+    if request.method == 'POST':
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
+            user = authenticate(request, username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return render(request,'menu/shop.html')  # Cambia 'home' por el nombre de la página a la que deseas redirigir después del login
+            else:
+                form.add_error(None, 'Credenciales inválidas.')
+    else:
+        form = LoginForm()
+    return render(request, 'menu/login.html', {'form': form})
+
