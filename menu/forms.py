@@ -1,7 +1,7 @@
 
 from django import forms
 from .models import Producto
-
+from django.contrib.auth.forms import UserCreationForm
 
 class LoginForm(forms.Form):
     username = forms.CharField(max_length=150)
@@ -17,3 +17,5 @@ class   ProductoForm(forms.ModelForm):
         fields = '__all__'
 
 
+class CustomUserCreationForm(UserCreationForm):
+    pass

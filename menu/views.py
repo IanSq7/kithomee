@@ -1,12 +1,15 @@
 from pyexpat.errors import messages
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from menu.carrito import Carrito
 from .forms import ProductoForm
 from django.contrib.auth.forms import UserCreationForm
 from menu.models import Producto
+from django.shortcuts import render, redirect
+from .forms import LoginForm
+from .forms import CustomUserCreationForm
+from django.contrib.auth import authenticate, login
 
 
 
@@ -188,3 +191,19 @@ def login_view(request):
         form = LoginForm()
     return render(request, 'menu/login.html', {'form': form})
 
+
+def registro(request):
+    data = {
+        'form': CustomUserCreationForm()
+    }
+
+    if request.method == 'POST':
+        formulario = CustomUserCreationForm(data=request.POST)
+        if formulario.is_valid():
+            formulario.save()
+            user = authenticate(username=formulario.cleaned_data["username"], password=formulario.cleaned_data["password1"])
+            login(request, user)
+            return redirect(to="about")
+
+        data ["form"] = formulario   
+    return render (request, 'menu/registro.html', data)
