@@ -1,7 +1,7 @@
 from django import views
 from django.contrib import admin
 from django.urls import path, include
-from .views import home, about, adminvista,banqueta,changepassword,checkit,comoda,contact,lampara,lamparatecho,perfil,recovery,register,shop,silla,sitial,sofa1,sofaredondo,team,sofahogar,sofahogardetalle,escritorios,escritoriodetalle,escritoriodetalle1,roperos,roperodetalle1,roperodetalle2,sillasoficinas,sillaoficinadetalle1,sillaoficinadetalle2,veladores,veladordetalle1,veladordetalle2,agregar_producto,eliminar_producto,restar_producto,limpiar_carrito
+from .views import home, about, adminvista,banqueta,changepassword,checkit,comoda,contact,lampara,lamparatecho,perfil,recovery,register,shop,silla,sitial,sofa1,sofaredondo,team,sofahogar,sofahogardetalle,escritorios,escritoriodetalle,escritoriodetalle1,roperos,roperodetalle1,roperodetalle2,sillasoficinas,sillaoficinadetalle1,sillaoficinadetalle2,veladores,veladordetalle1,veladordetalle2,agregar_producto,eliminar_producto,restar_producto,limpiar_carrito,add_producto, listar_productos
 urlpatterns = [
     path('',home,name="home"),
     path('about/',about,name="about"),
@@ -40,4 +40,6 @@ urlpatterns = [
     path('eliminar/<int:producto_id>/', eliminar_producto, name="eliminar"),
     path('restar/<int:producto_id>/', restar_producto, name="restar"),
     path('limpiar/', limpiar_carrito, name="limpiar"),
+    path('add-producto/', add_producto, name="add_producto"),
+    path('listar-productos/', listar_productos, name="listar_productos"),
 ]

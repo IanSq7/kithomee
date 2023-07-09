@@ -44,8 +44,15 @@ INSTALLED_APPS = [
     'rest_pregunta',
     'rest_framework.authtoken',
     'bootstrap5',
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'django.contrib.humanize',
     
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [

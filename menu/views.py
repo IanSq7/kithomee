@@ -3,6 +3,7 @@ from django.contrib.auth import authenticate, login
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from menu.carrito import Carrito
+from .forms import ProductoForm
 
 from menu.models import Producto
 
@@ -51,7 +52,10 @@ def register (request):
 
 def shop (request):
     productos = Producto.objects.all()
-    return render (request, 'menu/shop.html', {'productos':productos})
+    data = {
+        'productos': productos
+    }
+    return render (request, 'menu/shop.html', data)
 
 def silla (request):
     return render (request, 'menu/silla.html')
@@ -134,6 +138,31 @@ def limpiar_carrito(request):
     carrito.limpiar()
     return redirect("shop")
         
+def add_producto(request):
+
+    data = {
+        'form': ProductoForm()
+    }
+
+    if request.method == 'POST':
+        formulario = ProductoForm(data=request.POST, files=request.FILES)
+        if formulario.is_valid():
+            formulario.save()
+            data["mensaje"] = "Guardado Correctamente"
+        else:
+            data["form"] = formulario
+
+    return render(request, 'producto/agregar.html', data)
+
+def listar_productos(request):
+    productos = Producto.objects.all()
+
+    data = {
+        'productos': productos
+    }
+
+    return render(request, 'producto/listar.html', data)
+
 # inicio se sesion / cierre de sesion
 
 

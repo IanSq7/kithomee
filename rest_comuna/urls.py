@@ -5,7 +5,7 @@ from rest_framework import routers
 from rest_comuna import views
 
 router=routers.DefaultRouter()
-router.register(r'comuna', views.ComunaSerializer)
+router.register(r'comuna', views.ComunaViewSet)
 
 
 urlpatterns = [
